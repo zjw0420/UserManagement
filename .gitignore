@@ -1,0 +1,7 @@
+.env
+.idea/
+target/
+*.jar
+*.log
+node_modules/
+dist/
