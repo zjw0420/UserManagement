@@ -5,3 +5,10 @@ target/
 *.log
 node_modules/
 dist/
+*.rdb
+*.sqlite
+*.class
+out/
+src/
+*.bat
+*.zip
