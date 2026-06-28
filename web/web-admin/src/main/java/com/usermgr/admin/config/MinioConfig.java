@@ -2,7 +2,7 @@ package com.usermgr.admin.config;
 
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,7 +13,7 @@ public class MinioConfig {
     private MinioProperties properties;
 
     @Bean
-    @ConditionalOnProperty(name = "minio.endpoint")
+    @ConditionalOnExpression("not '${minio.endpoint:}'.equals('')")
     public MinioClient minioClient() {
         return MinioClient.builder()
                 .endpoint(properties.getEndpoint())
