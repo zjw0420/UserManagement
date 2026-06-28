@@ -10,6 +10,7 @@ import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +25,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
+@ConditionalOnExpression("not '${minio.endpoint:}'.equals('')")
 public class FileServiceImpl implements FileService {
 
     private static final List<String> ALLOWED_TYPES = List.of(
